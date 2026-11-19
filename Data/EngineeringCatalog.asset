@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f7be28a4d7e374d9c7911bacfa847a, type: 3}
+  m_Name: EngineeringCatalog
+  m_EditorClassIdentifier: KMaxLauncher::ViitorCloud.KMaxLauncher.LauncherCatalog
+  title: UNDER THE HOOD
+  loadFormat: Load {0}
+  entries:
+  - label: Inline-Four Engine
+    subtitle: Explode and run an i4 engine
+    scenePath: Assets/Games/kmax-display-example/Scenes/VirtualExhibition WR.unity
+    previewPrefab: {fileID: 1000011176706312, guid: 8b2a962324aeef44fa4ba00c710b55b1, type: 3}
+    thumbnail: {fileID: 21300000, guid: 67a8ca4f8c8b00b4691d5f65d1bb6afb, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Pontiac V8 Assembly
+    subtitle: Drag the parts of a Pontiac V8 into place
+    scenePath: Assets/Games/kmax-automobile-engine/Scenes/EngineAssembly.unity
+    previewPrefab: {fileID: 4104975308036884425, guid: c6895f1a738826b42b205fb394f75d23, type: 3}
+    thumbnail: {fileID: -2031964641868694346, guid: 2af71a49176f9ba4393c6740d1187b8d, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Pontiac V8 Experience
+    subtitle: Explode, explore and start a Pontiac V8
+    scenePath: Assets/Games/kmax-automobile-engine/Scenes/EngineExperience.unity
+    previewPrefab: {fileID: 4104975308036884425, guid: c6895f1a738826b42b205fb394f75d23, type: 3}
+    thumbnail: {fileID: -8367809983796497937, guid: 4fe2b6d2a34da8b478f8f15022b34095, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 

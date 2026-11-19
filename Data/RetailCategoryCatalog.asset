@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f7be28a4d7e374d9c7911bacfa847a, type: 3}
+  m_Name: RetailCategoryCatalog
+  m_EditorClassIdentifier: KMaxLauncher::ViitorCloud.KMaxLauncher.LauncherCatalog
+  title: STEP INTO THE SHOWROOM
+  loadFormat: Load {0}
+  entries:
+  - label: Armchair
+    subtitle: Five armchairs in leather and fabric
+    scenePath: Assets/Games/kmax-retail-products/Scenes/RetailShowroom.unity
+    previewPrefab: {fileID: 3097893357975766214, guid: 53115ae5d052dde489faa363d401d994, type: 3}
+    thumbnail: {fileID: -6854275585154405479, guid: 9186dcb2638013f4384c4c35fa1a5556, type: 3}
+    hidden: 0
+    launchKey: KMax.Retail.Category
+    launchValue: Armchair
+  - label: Bed
+    subtitle: Four beds, each in several variants
+    scenePath: Assets/Games/kmax-retail-products/Scenes/RetailShowroom.unity
+    previewPrefab: {fileID: 8162532586463773842, guid: a32c416431efab8458432859bbe16d4b, type: 3}
+    thumbnail: {fileID: 2844044466173514573, guid: b8c74006de142904c93690c0fecf6296, type: 3}
+    hidden: 0
+    launchKey: KMax.Retail.Category
+    launchValue: Bed
+  - label: Dining table
+    subtitle: Four dining tables to look over
+    scenePath: Assets/Games/kmax-retail-products/Scenes/RetailShowroom.unity
+    previewPrefab: {fileID: 7100816844782051407, guid: 861638558a3d7eb46bb18e995b0ea2a2, type: 3}
+    thumbnail: {fileID: -5688216002004349369, guid: de61d6f53f42d5e499f86eafb1f38fda, type: 3}
+    hidden: 0
+    launchKey: KMax.Retail.Category
+    launchValue: Dining table
+  - label: Coffee table
+    subtitle: Four coffee tables for the lounge
+    scenePath: Assets/Games/kmax-retail-products/Scenes/RetailShowroom.unity
+    previewPrefab: {fileID: 8996408185808795436, guid: 1c8c3b246a4b0ca45b1b886dab2782fd, type: 3}
+    thumbnail: {fileID: 2668379630425409733, guid: 2beec1d299ff38f4db17ab391ee6861a, type: 3}
+    hidden: 0
+    launchKey: KMax.Retail.Category
+    launchValue: Coffee table
+  - label: TV unit
+    subtitle: Three TV units, in size and in feet
+    scenePath: Assets/Games/kmax-retail-products/Scenes/RetailShowroom.unity
+    previewPrefab: {fileID: 1524596133207346418, guid: 5aacc6addbaba414586137be6699c834, type: 3}
+    thumbnail: {fileID: -6418677932875952903, guid: 1874b9a9069624d469c2d0e1fbcca716, type: 3}
+    hidden: 0
+    launchKey: KMax.Retail.Category
+    launchValue: TV unit
+  - label: Wardrobe
+    subtitle: Two wardrobes, door by door
+    scenePath: Assets/Games/kmax-retail-products/Scenes/RetailShowroom.unity
+    previewPrefab: {fileID: 926185071513180597, guid: 332285965a86c774ab214bfacc4fee18, type: 3}
+    thumbnail: {fileID: 4498944525521070378, guid: d254e2fafbf6b1945965509a35c316b3, type: 3}
+    hidden: 0
+    launchKey: KMax.Retail.Category
+    launchValue: Wardrobe

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f7be28a4d7e374d9c7911bacfa847a, type: 3}
+  m_Name: EducationCatalog
+  m_EditorClassIdentifier: KMaxLauncher::ViitorCloud.KMaxLauncher.LauncherCatalog
+  title: LEARN BY EXPLORING
+  loadFormat: Load {0}
+  entries:
+  - label: Physics
+    subtitle: 'Gravity explained with the Earth: drop, orbit, escape'
+    scenePath: Assets/Games/kmax-education/Scenes/GravityWell.unity
+    previewPrefab: {fileID: 9048905882776146446, guid: f8d2a8913f9a7574ea2ec0de977f8027, type: 3}
+    thumbnail: {fileID: 4703754224083281020, guid: 6c6226d10fe629c44a4a8558a57eed75, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Technology
+    subtitle: How an aeroplane flies, on a 1909 biplane
+    scenePath: Assets/Games/kmax-education/Scenes/AircraftFlight.unity
+    previewPrefab: {fileID: 9095444172527402362, guid: 39d1a25282d5e2d42ba3edbabee7c038, type: 3}
+    thumbnail: {fileID: 6286728706534349770, guid: 3bd12a9738a79f04ead743cd6bdb3db2, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Arts
+    subtitle: 'Famous paintings: the Mona Lisa, explained'
+    scenePath: Assets/Games/kmax-education/Scenes/ArtPainting.unity
+    previewPrefab: {fileID: 8636009022428307859, guid: 7e11424d05358ae4da030e7f41d69586, type: 3}
+    thumbnail: {fileID: 72721553976123082, guid: 401ff606a62dccf4395245852eecc580, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Chemistry
+    subtitle: 'Carbon compounds in 3D: single, double and triple bonds'
+    scenePath: Assets/Games/kmax-education/Scenes/ChemistryBonds.unity
+    previewPrefab: {fileID: 5447763078938937937, guid: 14f3c1e985a916245a974874cd6cf05a, type: 3}
+    thumbnail: {fileID: 2145053869738859550, guid: 2ba544622bb0c4c45b06ae7f78d421cc, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Geography
+    subtitle: 'The solar system: planets in orbit, explained'
+    scenePath: Assets/Games/kmax-education/Scenes/SolarSystem.unity
+    previewPrefab: {fileID: 2828181873982312953, guid: 912f6292cc45e18428df4ad4000501a0, type: 3}
+    thumbnail: {fileID: 2525654056220554324, guid: f7f10da62177bd945af9e57dc172b68c, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 

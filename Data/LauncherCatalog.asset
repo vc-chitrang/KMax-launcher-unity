@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f7be28a4d7e374d9c7911bacfa847a, type: 3}
+  m_Name: LauncherCatalog
+  m_EditorClassIdentifier: KMaxLauncher::ViitorCloud.KMaxLauncher.LauncherCatalog
+  title: EXPLORE IN 3D
+  loadFormat: Load {0}
+  entries:
+  - label: Biology
+    subtitle: Explore the body, organ by organ
+    scenePath: Assets/Games/kmax-human-anatomy/Scene/Main.unity
+    previewPrefab: {fileID: 4255595399543801196, guid: 38935776bd387804b90a6921641a2fc2, type: 3}
+    thumbnail: {fileID: 21300000, guid: bcd0501634127d74bbab1d55a3b6e51e, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Medical
+    subtitle: Take the eye apart, structure by structure
+    scenePath: Assets/Games/kmax-display-example/Scenes/EyeAnatomy.unity
+    previewPrefab: {fileID: 8771091787928289351, guid: 5c0ba5d3eeddd1b4a96c46043a0b3f4e, type: 3}
+    thumbnail: {fileID: 21300000, guid: 6c77a421fce388044b211c889bf779b9, type: 3}
+    hidden: 1
+    launchKey: 
+    launchValue: 
+  - label: Engineering
+    subtitle: 'Virtual exhibition: explode and run an i4 engine'
+    scenePath: Assets/Games/KMax-launcher-unity/Scenes/EngineeringHomeScene.unity
+    previewPrefab: {fileID: 1000011176706312, guid: 8b2a962324aeef44fa4ba00c710b55b1, type: 3}
+    thumbnail: {fileID: 21300000, guid: 382e2a1f1b237bf45a247018fc84a4b0, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Electronics
+    subtitle: Build circuits on a 3D board
+    scenePath: Assets/Games/KMaxPCBAssembly/Scenes/Main.unity
+    previewPrefab: {fileID: 8764538108368047447, guid: f012a1f067c0a7048bac9a41830b547a, type: 3}
+    thumbnail: {fileID: 21300000, guid: f3d8e93a2db907d41b812719154f370b, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Automobile
+    subtitle: Tour a Volvo S90, door by door
+    scenePath: Assets/Games/KMax-launcher-unity/Scenes/AutomobileHomeScene.unity
+    previewPrefab: {fileID: 919132149155446097, guid: d81d210f676927648a684c47a1ad139b, type: 3}
+    thumbnail: {fileID: 21300000, guid: a2529a7f1d4635b4592c702b714e274b, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Retail
+    subtitle: 'Furniture: pick a design, then a finish'
+    scenePath: Assets/Games/KMax-launcher-unity/Scenes/RetailHomeScene.unity
+    previewPrefab: {fileID: 3097893357975766214, guid: 53115ae5d052dde489faa363d401d994, type: 3}
+    thumbnail: {fileID: 1594640136869046812, guid: 3e83e857f9f3b864fb09bc14ae66508d, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 
+  - label: Education
+    subtitle: 'Physics, and more subjects to come: start with gravity'
+    scenePath: Assets/Games/KMax-launcher-unity/Scenes/EducationHomeScene.unity
+    previewPrefab: {fileID: 9048905882776146446, guid: f8d2a8913f9a7574ea2ec0de977f8027, type: 3}
+    thumbnail: {fileID: 2823211243130321003, guid: 1196d33e4566cf44790017ed21a2c63c, type: 3}
+    hidden: 0
+    launchKey: 
+    launchValue: 

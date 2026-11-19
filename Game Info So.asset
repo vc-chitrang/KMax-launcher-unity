@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d412101ac104ec8a48dfe5ec56652c, type: 3}
+  m_Name: Game Info So
+  m_EditorClassIdentifier: BaseProject::ViitorCloud.Base.BaseScripts.Internal.Scripts.Models.Data.GameInfo.ViitorCloudGameInfoSo
+  dummyData: '?'
+  value:
+    gamePath: 
+    usesLocalization: 0
+    gameID: KMaxLauncher
+    repoPath: https://github.com/vc-chitrang/KMax-launcher-unity.git
+    applicationType: 0
+    scenes:
+    - active: 1
+      scene: {fileID: 102900000, guid: 294d334a619a78d47a23932f1270fa8f, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 1854d06d9fafd764a907f18169857774, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: e77cb28325e176e48af49fefe78fb4bc, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: ce2f80b41246fad4fb6e323976da8376, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 4ec68fe966309344080f9f8aad0302e6, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: d48144797f16ccc4ebc9c9cf2d93cc5b, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 2666dd169b1841f4b9b870fdee300540, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 9bd172045a043e44691b6c3b20645c74, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 31e766b01a9e5ed42940dc8a8b9c998e, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 4c014f8405453ea409571ce07081bc98, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 3e419a8894647a840a03a32285097c8b, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 7e32b5d3e0dd28741b32b3d0b981968b, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 2a90ecd3569a95243a91a9d9d7b1aae3, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 8f44a05c813f4d44bbecf0f065d9688b, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: b8ebd224ac9960d49a43dcbe0dd11f60, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: b826c1e1872502542a0d4c99790267a1, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 437ca86b1b0ef8041a9c84f70e52d776, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: d63dcd2b192ef374486ad037e384bd8d, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 6c24d46e268e8f94f81baecbe966eb2b, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 37691eb3ce628ca42acf1ff67b11befc, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: c9009f22aa3aa494b8fd5f7d7372000a, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 9b94f8869d46fc44eba901887333e590, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: dfafaadc0fed12045a7245378c3a0a48, type: 3}
+    - active: 1
+      scene: {fileID: 102900000, guid: 180e917cdece9b34ea2e273a28cff17e, type: 3}
+    photonID: 
+    agoraID: 
+    projectSettings:
+      colorSpace: 0
+      tags: []
+      layers: []
+      physics:
+        physics2DSettings:
+          gravity: {x: 0, y: -9.81}
+          velocityIterations: 8
+          positionIterations: 3
+          velocityThreshold: 1
+          maxLinearCorrection: 0.2
+          maxAngularCorrection: 8
+          maxTranslationSpeed: 100
+          maxRotationSpeed: 360
+          baumgarteScale: 0.2
+          baumgarteTOIScale: 0.75
+          timeToSleep: 0.5
+          linearSleepTolerance: 0.01
+          angularSleepTolerance: 2
+          defaultContactOffset: 0.01
+          simulationMode: 0
+          queriesHitTriggers: 1
+          queriesStartInColliders: 1
+          callbacksOnDisable: 1
+          reuseCollisionCallbacks: 1
+          autoSyncTransforms: 0
+        physics3DSettings:
+          gravity: {x: 0, y: -9.81, z: 0}
+          bounceThreshold: 2
+          sleepThreshold: 0.005
+          defaultContactOffset: 0.01
+          defaultSolverIterations: 6
+          defaultSolverVelocityIterations: 1
+          queriesHitBackfaces: 0
+          queriesHitTriggers: 1
+          autoSimulation: 1
+          autoSyncTransforms: 0
+          reuseCollisionCallbacks: 1
+        collisionOverrides2D: []
+        collisionOverrides3D: []
+      alwaysIncludedShaders: []
+      alwaysIncludedShadersVariantsCollection: []
+    properties:
+      title: FMax Launcher
+      companyName: ViitorCloud
+      bundleId: 
+      version: 1.0.2
+      versionCode: 10
+      icon: {fileID: 2800000, guid: 3408c998c445baa4e86f9fb38e827024, type: 3}
+      splashScreenLogo: {fileID: 0}
+      splashScreenLogoBg: {fileID: 0}
+      splashBgBlur: 1
+      portrait: 1
+      portraitUpsideDown: 1
+      landscapeLeft: 0
+      landscapeRight: 0
+      hostForSchemes: vc
+      urlSchemes: []
+    packages:
+      ar: 0
+      vr: 0
+      urp: 1
+      hdrp: 0
+      addressables: 0
+      doNotForceChangePipeline: 0
+      renderingPipelineAsset: {fileID: 11400000, guid: 5a51185cf9966694985878bf8e647ecc, type: 2}

@@ -1,0 +1,22 @@
+{
+	"name": "KMaxLauncher.Editor",
+	"rootNamespace": "ViitorCloud.KMaxLauncher.Editor",
+	"references": [
+		"KMaxLauncher",
+		"UnityEngine.UI",
+		"Unity.TextMeshPro"
+	],
+	"includePlatforms": [
+		"Editor"
+	],
+	"excludePlatforms": [],
+	"allowUnsafeCode": false,
+	"overrideReferences": false,
+	"precompiledReferences": [],
+	"autoReferenced": true,
+	"defineConstraints": [
+		"!KMAX_AIO_K1"
+	],
+	"versionDefines": [],
+	"noEngineReferences": false
+}
