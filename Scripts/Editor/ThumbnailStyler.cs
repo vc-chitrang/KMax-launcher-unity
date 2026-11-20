@@ -17,6 +17,7 @@ namespace ViitorCloud.KMaxLauncher.Editor {
         private const int CornerProbe = 1;
 
         private static readonly string[] Folders = new string[] {
+            "Assets/Games/kmax-education/UI/Thumbnails",
             "Assets/Games/KMax-launcher-unity/UI/Thumbnails",
             "Assets/Games/kmax-human-anatomy/Generated/Resources/Anatomy/Thumbs",
             "Assets/Games/KMaxPCBAssembly/UI/Thumbnails",

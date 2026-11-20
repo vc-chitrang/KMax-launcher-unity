@@ -34,8 +34,8 @@ MonoBehaviour:
   - label: Arts
     subtitle: 'Famous paintings: the Mona Lisa, explained'
     scenePath: Assets/Games/kmax-education/Scenes/ArtPainting.unity
-    previewPrefab: {fileID: 8636009022428307859, guid: 7e11424d05358ae4da030e7f41d69586, type: 3}
-    thumbnail: {fileID: 72721553976123082, guid: 401ff606a62dccf4395245852eecc580, type: 3}
+    previewPrefab: {fileID: 824976746150026348, guid: 31844cd409e92c9499edeca910cb4bef, type: 3}
+    thumbnail: {fileID: 72721553976123082, guid: 6bac269a412e14d48987246001233d59, type: 3}
     hidden: 0
     launchKey: 
     launchValue: 
@@ -47,11 +47,11 @@ MonoBehaviour:
     hidden: 0
     launchKey: 
     launchValue: 
-  - label: Geography
+  - label: Solar System
     subtitle: 'The solar system: planets in orbit, explained'
     scenePath: Assets/Games/kmax-education/Scenes/SolarSystem.unity
-    previewPrefab: {fileID: 2828181873982312953, guid: 912f6292cc45e18428df4ad4000501a0, type: 3}
-    thumbnail: {fileID: 2525654056220554324, guid: f7f10da62177bd945af9e57dc172b68c, type: 3}
+    previewPrefab: {fileID: 1567880922961417696, guid: b5dadc2160f6161409c5e1d0fdfb910a, type: 3}
+    thumbnail: {fileID: -5796665366638305385, guid: 2ea02971d870d6f42b74ecadbe2fc978, type: 3}
     hidden: 0
     launchKey: 
     launchValue: 

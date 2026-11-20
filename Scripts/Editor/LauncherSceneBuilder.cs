@@ -58,8 +58,9 @@ namespace ViitorCloud.KMaxLauncher.Editor {
         private const float ChemistryThumbnailMargin = 0.8f;
         private const string SolarScenePath = EducationRoot + "/Scenes/SolarSystem.unity";
         private const string SolarPrefabPath = EducationRoot + "/Prefabs/SolarSystem.prefab";
-        private const string GeographyThumbnail = EducationRoot + "/UI/Thumbnails/Geography.png";
-        private const float GeographyThumbnailMargin = 0.9f;
+        private const string SolarPreviewPrefabPath = EducationRoot + "/Prefabs/SolarSystemPreview.prefab";
+        private const string SolarThumbnail = EducationRoot + "/UI/Thumbnails/SolarSystem.png";
+        private const float SolarThumbnailMargin = 0.9f;
         private const float ArtThumbnailMargin = 0.7f;
         private const float EarthThumbnailMargin = 0.5f;
         private const float HomeWidth = 150f;
@@ -190,11 +191,11 @@ namespace ViitorCloud.KMaxLauncher.Editor {
                 ChemistryThumbPrefab,
                 ChemistryThumbnail),
             new ProjectDefaults(
-                "Geography",
+                "Solar System",
                 "The solar system: planets in orbit, explained",
                 SolarScenePath,
-                SolarPrefabPath,
-                GeographyThumbnail)
+                SolarPreviewPrefabPath,
+                SolarThumbnail)
         };
 
         private static readonly ProjectDefaults[] AutomobileProjects = new ProjectDefaults[] {
@@ -426,7 +427,7 @@ namespace ViitorCloud.KMaxLauncher.Editor {
             if (!RetailCategoryThumbnails.EnsureAt(TechnologyThumbnail, AircraftPrefabPath, AircraftThumbnailMargin)
                 || !RetailCategoryThumbnails.EnsureAt(ArtThumbnail, MonaLisaFramePath, ArtThumbnailMargin)
                 || !RetailCategoryThumbnails.EnsureAt(ChemistryThumbnail, ChemistryThumbPrefab, ChemistryThumbnailMargin)
-                || !RetailCategoryThumbnails.EnsureAt(GeographyThumbnail, SolarPrefabPath, GeographyThumbnailMargin)) {
+                || !RetailCategoryThumbnails.EnsureAt(SolarThumbnail, SolarPreviewPrefabPath, SolarThumbnailMargin)) {
                 return false;
             }
 

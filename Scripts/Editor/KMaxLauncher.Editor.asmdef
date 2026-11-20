@@ -4,7 +4,9 @@
 	"references": [
 		"KMaxLauncher",
 		"UnityEngine.UI",
-		"Unity.TextMeshPro"
+		"Unity.TextMeshPro",
+		"KmaxEducation",
+		"KmaxEducation.Editor"
 	],
 	"includePlatforms": [
 		"Editor"
