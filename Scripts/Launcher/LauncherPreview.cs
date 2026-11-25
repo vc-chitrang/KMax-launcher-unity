@@ -62,6 +62,21 @@ namespace ViitorCloud.KMaxLauncher {
             current = next;
         }
 
+        /// <summary>Immediately settles transitions, deactivating retiring models and popping current to full scale.</summary>
+        public void SnapToCurrent() {
+            for (int i = retiring.Count - 1; i >= 0; i--) {
+                retiring[i].Pivot.SetActive(false);
+                retiring[i].PopScale = 0f;
+            }
+
+            retiring.Clear();
+            if (current != null) {
+                current.PopScale = 1f;
+                current.PopVelocity = 0f;
+                Turn(current, 0f);
+            }
+        }
+
         private void Update() {
             float delta = Time.deltaTime;
             transform.localPosition = restPosition + new Vector3(0f, Mathf.Sin(Time.time * bobSpeed) * bobMetres, 0f);

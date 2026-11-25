@@ -60,6 +60,19 @@ namespace ViitorCloud.KMaxLauncher.Editor {
         private const string SolarPrefabPath = EducationRoot + "/Prefabs/SolarSystem.prefab";
         private const string SolarPreviewPrefabPath = EducationRoot + "/Prefabs/SolarSystemPreview.prefab";
         private const string SolarThumbnail = EducationRoot + "/UI/Thumbnails/SolarSystem.png";
+        private const string MissionControlScenePath = GamesRoot + "/kmax-solar-system/Scenes/MissionControl.unity";
+        private const string ExplodeViewsScenePath = GamesRoot + "/kmax-solar-system/Scenes/ExplodeViews.unity";
+        private const string ExplodeViewsPreviewPrefabPath = GamesRoot + "/kmax-solar-system/Prefabs/ExplodeViewsPreview.prefab";
+        private const string ExplodeViewsThumbnail = ThumbnailsFolder + "/Explode_Views.png";
+        private const string ExplorePartsHomeScenePath = LauncherRoot + "/Scenes/ExplorePartsHomeScene.unity";
+        private const string ExplorePartsCatalogPath = CatalogFolder + "/ExplorePartsCatalog.asset";
+        private const string ExplorePartsTitle = "TAKE IT APART";
+        private const string ExplorePartsModelKey = "ExploreParts.Model";
+        private const string ExplorePumpPreviewPrefabPath = GamesRoot + "/kmax-solar-system/Prefabs/ExplodePumpPreview.prefab";
+        private const string ExploreAnatomyPreviewPrefabPath = GamesRoot + "/kmax-solar-system/Prefabs/ExplodeAnatomyPreview.prefab";
+        private const string ExploreBikeThumbnail = ThumbnailsFolder + "/Explore_RSV4.png";
+        private const string ExplorePumpThumbnail = ThumbnailsFolder + "/Explore_Pump.png";
+        private const string ExploreAnatomyThumbnail = ThumbnailsFolder + "/Explore_Anatomy.png";
         private const float SolarThumbnailMargin = 0.9f;
         private const float ArtThumbnailMargin = 0.7f;
         private const float EarthThumbnailMargin = 0.5f;
@@ -87,10 +100,11 @@ namespace ViitorCloud.KMaxLauncher.Editor {
         private const string DustSpriteName = "SoftDot.png";
         private const string DustShaderName = "Universal Render Pipeline/Particles/Unlit";
         private const string MainSceneFileName = "Main.unity";
+        private const string DevelopmentScenePrefix = "AssetIntake";
 
         private const float GlassBaseSize = 64f;
         private const float GlassBaseSlice = 16f;
-        private const int DefaultCardsPerRow = 7;
+        private const int DefaultCardsPerRow = 8;
         private const int RetailCardsPerRow = 6;
         private const int RowCount = 2;
 
@@ -162,7 +176,19 @@ namespace ViitorCloud.KMaxLauncher.Editor {
                 "Physics, and more subjects to come: start with gravity",
                 EducationHomeScenePath,
                 EarthPrefabPath,
-                EducationThumbnail)
+                EducationThumbnail),
+            new ProjectDefaults(
+                "Mission Control",
+                "Solar System: orbits and deep space probe missions",
+                MissionControlScenePath,
+                SolarPreviewPrefabPath,
+                SolarThumbnail),
+            new ProjectDefaults(
+                "Explore Parts",
+                "Aprilia RSV4, Centrifugal Pump & Human Anatomy in 3D exploded views",
+                ExplorePartsHomeScenePath,
+                ExplodeViewsPreviewPrefabPath,
+                ExplodeViewsThumbnail)
         };
 
         private static readonly ProjectDefaults[] EducationProjects = new ProjectDefaults[] {
@@ -270,6 +296,33 @@ namespace ViitorCloud.KMaxLauncher.Editor {
                 "Wardrobe")
         };
 
+        private static readonly ProjectDefaults[] ExploreProjects = new ProjectDefaults[] {
+            new ProjectDefaults(
+                "Aprilia RSV4",
+                "A superbike in 35 parts: pull it apart",
+                ExplodeViewsScenePath,
+                ExplodeViewsPreviewPrefabPath,
+                ExploreBikeThumbnail,
+                ExplorePartsModelKey,
+                "RSV4"),
+            new ProjectDefaults(
+                "Centrifugal Pump",
+                "An industrial pump, 167 parts, casing to impeller",
+                ExplodeViewsScenePath,
+                ExplorePumpPreviewPrefabPath,
+                ExplorePumpThumbnail,
+                ExplorePartsModelKey,
+                "Pump"),
+            new ProjectDefaults(
+                "Human Anatomy",
+                "820 parts: skeleton, lungs and organs apart",
+                ExplodeViewsScenePath,
+                ExploreAnatomyPreviewPrefabPath,
+                ExploreAnatomyThumbnail,
+                ExplorePartsModelKey,
+                "Anatomy")
+        };
+
         private static readonly ProjectDefaults[] EngineeringProjects = new ProjectDefaults[] {
             new ProjectDefaults(
                 "Inline-Four Engine",
@@ -320,6 +373,8 @@ namespace ViitorCloud.KMaxLauncher.Editor {
         private static readonly ScreenSpec AutomobileScreen = new ScreenSpec(AutomobileScenePath, AutomobileCatalogPath, AutomobileTitle, AutomobileProjects, true);
 
         private static readonly ScreenSpec RetailScreen = new ScreenSpec(RetailHomeScenePath, RetailCatalogPath, RetailTitle, RetailProjects, true, RetailCardsPerRow);
+
+        private static readonly ScreenSpec ExplorePartsScreen = new ScreenSpec(ExplorePartsHomeScenePath, ExplorePartsCatalogPath, ExplorePartsTitle, ExploreProjects, true);
 
         private static readonly ScreenSpec EducationScreen = new ScreenSpec(EducationHomeScenePath, EducationCatalogPath, EducationTitle, EducationProjects, true);
 
@@ -409,7 +464,7 @@ namespace ViitorCloud.KMaxLauncher.Editor {
         [MenuItem("KMax/Launcher/Build Launcher Scene")]
         public static bool BuildLauncherScene() {
             Scene open = EditorSceneManager.GetActiveScene();
-            if (open.isDirty && open.path != LauncherScenePath && open.path != EngineeringScenePath && open.path != AutomobileScenePath && open.path != RetailHomeScenePath && open.path != EducationHomeScenePath) {
+            if (open.isDirty && open.path != LauncherScenePath && open.path != EngineeringScenePath && open.path != AutomobileScenePath && open.path != RetailHomeScenePath && open.path != EducationHomeScenePath && open.path != ExplorePartsHomeScenePath) {
                 Debug.LogError($"[Launcher Builder] Save or discard the open scene '{open.path}' first.");
                 return false;
             }
@@ -424,14 +479,48 @@ namespace ViitorCloud.KMaxLauncher.Editor {
                 return false;
             }
 
-            if (!RetailCategoryThumbnails.EnsureAt(TechnologyThumbnail, AircraftPrefabPath, AircraftThumbnailMargin)
-                || !RetailCategoryThumbnails.EnsureAt(ArtThumbnail, MonaLisaFramePath, ArtThumbnailMargin)
+            if (!RetailCategoryThumbnails.EnsureFitted(TechnologyThumbnail, AircraftPrefabPath, 215f, 22f, 0.86f)
+                || !RetailCategoryThumbnails.EnsureFitted(ArtThumbnail, MonaLisaFramePath, 0f, 0f, 0.86f)
                 || !RetailCategoryThumbnails.EnsureAt(ChemistryThumbnail, ChemistryThumbPrefab, ChemistryThumbnailMargin)
-                || !RetailCategoryThumbnails.EnsureAt(SolarThumbnail, SolarPreviewPrefabPath, SolarThumbnailMargin)) {
+                || !RetailCategoryThumbnails.EnsureFitted(SolarThumbnail, SolarPreviewPrefabPath, 0f, 50f, 0.88f)
+                || !RetailCategoryThumbnails.EnsureFitted(ExploreBikeThumbnail, ExplodeViewsPreviewPrefabPath, 30f, 12f, 0.88f)
+                || !RetailCategoryThumbnails.EnsureFitted(ExplorePumpThumbnail, ExplorePumpPreviewPrefabPath, 30f, 20f, 0.88f)
+                || !RetailCategoryThumbnails.EnsureFitted(ExploreAnatomyThumbnail, ExploreAnatomyPreviewPrefabPath, 0f, 4f, 0.9f)) {
                 return false;
             }
 
-            return BuildScreen(LauncherScreen) && BuildScreen(EngineeringScreen) && BuildScreen(AutomobileScreen) && BuildScreen(RetailScreen) && BuildScreen(EducationScreen);
+            return BuildScreen(LauncherScreen) && BuildScreen(EngineeringScreen) && BuildScreen(AutomobileScreen) && BuildScreen(RetailScreen) && BuildScreen(EducationScreen) && BuildScreen(ExplorePartsScreen);
+        }
+
+        /// <summary>
+        /// Builds only the Explore Parts home screen (cards for the three models, each opening the exploded view with that model chosen) and
+        /// points the launcher's "Explore Parts" card at it. Run <c>KMax/Explode/Build Explore Parts Preview Prefab</c> first; run
+        /// <c>KMax/Launcher/Apply Back Button And Load Layout</c> afterwards so the Back button sits where every other screen has it.
+        /// </summary>
+        [MenuItem("KMax/Launcher/Build Explore Parts Home")]
+        public static void BuildExplorePartsHome() {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) {
+                Debug.LogError("[Launcher Builder] Do not run in play mode.");
+                return;
+            }
+
+            bool thumbnails = RetailCategoryThumbnails.EnsureFitted(ExploreBikeThumbnail, ExplodeViewsPreviewPrefabPath, 30f, 12f, 0.88f)
+                && RetailCategoryThumbnails.EnsureFitted(ExplorePumpThumbnail, ExplorePumpPreviewPrefabPath, 30f, 20f, 0.88f)
+                && RetailCategoryThumbnails.EnsureFitted(ExploreAnatomyThumbnail, ExploreAnatomyPreviewPrefabPath, 0f, 4f, 0.9f);
+            if (!thumbnails) {
+                Debug.LogError("[Launcher Builder] Explore Parts thumbnails could not be made (build the preview prefabs first).");
+                return;
+            }
+
+            if (!BuildScreen(ExplorePartsScreen)) {
+                return;
+            }
+
+            EnsureCatalog(LauncherScreen);
+            AssetDatabase.SaveAssets();
+            EditorApplication.ExecuteMenuItem("KMax/Launcher/Sync Build Settings");
+            EditorApplication.ExecuteMenuItem("KMax/Launcher/Update Game Info");
+            Debug.Log("[Launcher Builder] Explore Parts home built.");
         }
 
         private static bool BuildScreen(ScreenSpec spec) {
@@ -612,7 +701,12 @@ namespace ViitorCloud.KMaxLauncher.Editor {
 
                 string[] guids = AssetDatabase.FindAssets("t:Scene", new string[] { folders[f] });
                 for (int i = 0; i < guids.Length; i++) {
-                    projectScenes.Add(AssetDatabase.GUIDToAssetPath(guids[i]));
+                    string scenePath = AssetDatabase.GUIDToAssetPath(guids[i]);
+                    if (Path.GetFileName(scenePath).StartsWith(DevelopmentScenePrefix)) {
+                        continue;
+                    }
+
+                    projectScenes.Add(scenePath);
                 }
             }
 
@@ -623,6 +717,7 @@ namespace ViitorCloud.KMaxLauncher.Editor {
             all.Add(AutomobileScenePath);
             all.Add(RetailHomeScenePath);
             all.Add(EducationHomeScenePath);
+            all.Add(ExplorePartsHomeScenePath);
             all.AddRange(projectScenes);
             return all;
         }

@@ -47,7 +47,8 @@ namespace ViitorCloud.KMaxLauncher.Editor {
                 bool arranged = ArrangeCar(scene);
                 bool rounded = RoundSwatches(scene);
                 bool sized = ResizeCar(scene);
-                if (arranged || rounded || sized) {
+                bool wrapped = WrapSwatchesInSlots();
+                if (arranged || rounded || sized || wrapped) {
                     EditorSceneManager.MarkSceneDirty(scene);
                     EditorSceneManager.SaveScene(scene);
                     changed++;
@@ -57,13 +58,58 @@ namespace ViitorCloud.KMaxLauncher.Editor {
             UnityEngine.SceneManagement.Scene retail = EditorSceneManager.OpenScene(RetailScenePath, OpenSceneMode.Single);
             bool retailArranged = ArrangeRetail(retail);
             bool retailSized = ResizeRetail(retail);
-            if (retailArranged || retailSized) {
+            bool retailWrapped = WrapSwatchesInSlots();
+            if (retailArranged || retailSized || retailWrapped) {
                 EditorSceneManager.MarkSceneDirty(retail);
                 EditorSceneManager.SaveScene(retail);
                 changed++;
             }
 
             Debug.Log("[Swatch Grid] " + changed + " scenes arranged.");
+        }
+
+        /// <summary>
+        /// Design.md 7.1: a button that has a <c>UiButtonMotion</c> must not be positioned by a layout group, because the motion writes its
+        /// anchored position every frame and the swatches then pile up in one place. Each swatch of a swatch grid is put inside a slot
+        /// that the grid positions; the swatch stretches to fill its slot. Safe to run again.
+        /// </summary>
+        private static bool WrapSwatchesInSlots() {
+            bool changed = false;
+            GridLayoutGroup[] grids = Object.FindObjectsByType<GridLayoutGroup>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            for (int g = 0; g < grids.Length; g++) {
+                string gridName = grids[g].name;
+                if (gridName != "PaintGrid" && gridName != "TrimGrid" && gridName != FinishGridName) {
+                    continue;
+                }
+
+                Transform gridTransform = grids[g].transform;
+                System.Collections.Generic.List<Transform> children = new System.Collections.Generic.List<Transform>();
+                for (int i = 0; i < gridTransform.childCount; i++) {
+                    children.Add(gridTransform.GetChild(i));
+                }
+
+                for (int i = 0; i < children.Count; i++) {
+                    Transform child = children[i];
+                    if (child.name.StartsWith("Slot_") || child.GetComponent<Button>() == null) {
+                        continue;
+                    }
+
+                    GameObject slot = new GameObject("Slot_" + child.name, typeof(RectTransform));
+                    slot.transform.SetParent(gridTransform, false);
+                    slot.transform.SetSiblingIndex(child.GetSiblingIndex());
+                    child.SetParent(slot.transform, false);
+                    RectTransform childRect = (RectTransform)child;
+                    childRect.anchorMin = Vector2.zero;
+                    childRect.anchorMax = Vector2.one;
+                    childRect.pivot = new Vector2(0.5f, 0.5f);
+                    childRect.offsetMin = Vector2.zero;
+                    childRect.offsetMax = Vector2.zero;
+                    childRect.localScale = Vector3.one;
+                    changed = true;
+                }
+            }
+
+            return changed;
         }
 
         /// <summary>Sets the Retail grid to the current cell size (absolute, so running it again changes nothing).</summary>

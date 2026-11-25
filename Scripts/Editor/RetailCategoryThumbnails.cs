@@ -107,6 +107,116 @@ namespace ViitorCloud.KMaxLauncher.Editor {
             }
         }
 
+        /// <summary>As <see cref="RenderFitted"/>, but only when the picture file does not exist yet.</summary>
+        public static bool EnsureFitted(string target, string prefabPath, float yaw, float elevation, float fill) {
+            if (File.Exists(target)) {
+                return true;
+            }
+
+            return RenderFitted(target, prefabPath, yaw, elevation, fill);
+        }
+
+        /// <summary>
+        /// Renders a card picture with the model fitted to the frame: the camera looks at the bounds centre from the given yaw and elevation
+        /// and is moved back until every corner of the bounds sits inside <paramref name="fill"/> of the frame, so a wide or flat model
+        /// (a painting, an aeroplane, a planet row) is as large as the card allows. Overwrites an existing file.
+        /// </summary>
+        public static bool RenderFitted(string target, string prefabPath, float yaw, float elevation, float fill) {
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+            if (prefab == null) {
+                Debug.LogError("[Thumbnails] Missing prefab " + prefabPath);
+                return false;
+            }
+
+            UnityEngine.SceneManagement.Scene scratch = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
+            RenderTexture texture = null;
+            try {
+                GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scratch);
+                instance.transform.position = Vector3.zero;
+                instance.transform.rotation = Quaternion.identity;
+                SetLayer(instance.transform);
+                Bounds bounds = Measure(instance);
+
+                GameObject lightObject = new GameObject("Light");
+                SceneManagementMove(lightObject, scratch);
+                Light light = lightObject.AddComponent<Light>();
+                light.type = LightType.Directional;
+                light.intensity = 1.2f;
+                light.shadows = LightShadows.None;
+                light.cullingMask = 1 << IsolatedLayer;
+                lightObject.layer = IsolatedLayer;
+                lightObject.transform.rotation = Quaternion.Euler(40f, -30f, 0f);
+
+                GameObject cameraObject = new GameObject("Camera");
+                SceneManagementMove(cameraObject, scratch);
+                Camera camera = cameraObject.AddComponent<Camera>();
+                camera.clearFlags = CameraClearFlags.SolidColor;
+                camera.backgroundColor = new Color(0.06f, 0.09f, 0.165f, 1f);
+                camera.fieldOfView = FieldOfView;
+                camera.aspect = (float)Width / Height;
+                camera.nearClipPlane = 0.005f;
+                camera.farClipPlane = 200f;
+                camera.cullingMask = 1 << IsolatedLayer;
+
+                Quaternion look = Quaternion.Euler(elevation, yaw, 0f);
+                Vector3 forward = look * Vector3.forward;
+                cameraObject.transform.rotation = look;
+
+                Vector3[] corners = new Vector3[8];
+                for (int i = 0; i < 8; i++) {
+                    corners[i] = bounds.center + new Vector3(
+                        (i & 1) == 0 ? -bounds.extents.x : bounds.extents.x,
+                        (i & 2) == 0 ? -bounds.extents.y : bounds.extents.y,
+                        (i & 4) == 0 ? -bounds.extents.z : bounds.extents.z);
+                }
+
+                float low = 0.05f;
+                float high = Mathf.Max(bounds.extents.magnitude * 40f, 5f);
+                for (int step = 0; step < 40; step++) {
+                    float mid = (low + high) * 0.5f;
+                    cameraObject.transform.position = bounds.center - forward * mid;
+                    float worst = 0f;
+                    for (int i = 0; i < 8; i++) {
+                        Vector3 view = camera.WorldToViewportPoint(corners[i]);
+                        worst = Mathf.Max(worst, Mathf.Abs(view.x - 0.5f) * 2f, Mathf.Abs(view.y - 0.5f) * 2f);
+                    }
+                    if (worst > fill) {
+                        low = mid;
+                    } else {
+                        high = mid;
+                    }
+                }
+                cameraObject.transform.position = bounds.center - forward * high;
+
+                texture = new RenderTexture(Width, Height, 24, RenderTextureFormat.ARGB32);
+                texture.antiAliasing = 4;
+                camera.targetTexture = texture;
+                camera.Render();
+
+                RenderTexture previous = RenderTexture.active;
+                RenderTexture.active = texture;
+                Texture2D readable = new Texture2D(Width, Height, TextureFormat.RGB24, false);
+                readable.ReadPixels(new Rect(0, 0, Width, Height), 0, 0);
+                readable.Apply();
+                RenderTexture.active = previous;
+                camera.targetTexture = null;
+                byte[] png = readable.EncodeToPNG();
+                Object.DestroyImmediate(readable);
+
+                Directory.CreateDirectory(Path.GetDirectoryName(target));
+                File.WriteAllBytes(target, png);
+                AssetDatabase.ImportAsset(target, ImportAssetOptions.ForceSynchronousImport);
+                return true;
+            } finally {
+                if (texture != null) {
+                    texture.Release();
+                    Object.DestroyImmediate(texture);
+                }
+
+                EditorSceneManager.CloseScene(scratch, true);
+            }
+        }
+
         private static void SetLayer(Transform root) {
             root.gameObject.layer = IsolatedLayer;
             for (int i = 0; i < root.childCount; i++) {

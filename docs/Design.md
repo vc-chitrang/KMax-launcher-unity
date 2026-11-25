@@ -159,6 +159,22 @@ Never put control instructions in a corner, over the model or in the controls co
 - **Caption card (information panel):** always bottom centre, **as wide and as tall as its text needs** (24 padding left and right, 14 top and bottom, never wider than 1040, at least 160 x 44, growing upwards from 24 above the bottom, text centred), so a short hint is a small card and a long description a larger one; it is visible even when idle and holds the control instruction or idle prompt (18 `#94A3B8`, left aligned, inset 18). A part's name (24 bold `#22D3EE`) and description (18 `#E2E8F0`) replace the prompt in the same card. Where a screen keeps a one-line control hint card as well (Pontiac screens, 70 tall), the information card sits directly above it, 12 apart.
 - **Backdrop particles never rotate with the model or the view.** Where a screen orbits the camera rig around the model, the ambient motes are children of the rig, in local simulation space, so they hold still on screen; they are never left in the world where the orbit would sweep them round. Interaction effects (bursts, rings, sparks) stay in the world at the selected point.
 
+### 6.3 Session strip, Result card and Toasts (Interactive Experience Program, Decision D1)
+
+- **Session strip (top centre):** Glass pill 520 x 56 px, anchored `(0.5, 1)` at `(0, -28)` from the top screen edge. Glass fill (`rgba(15, 23, 42, 0.85)`), outline Glass border (`rgba(30, 41, 59, 0.90)`).
+  - Left / Timer: Circular progress ring (accent `#22D3EE`) and countdown text (18 bold white `MM:SS`).
+  - Centre / Score: Live score display (18 bold white with muted label `pts`).
+  - Right / Stars: 3 star slots (28 x 28, dimmed `rgba(148, 163, 184, 0.3)` when locked; lit gold `#FBBF24` upon earning).
+  - Boundary safety: Centred strip fits strictly between top-left Title area and top-right Controls column with > 120 px horizontal clearance on each side at 1080p.
+- **Result card (bottom centre):** Replaces the caption card in the single bottom-centre panel zone (Rules R-12, gating idle caption card and hints). Size 640 x 300 px, anchored `(0.5, 0)` at `(0, 24)` above the bottom edge. Displays:
+  - Header: Session summary title (24 bold white).
+  - Stars: 3 large stars (48 x 48) revealed sequentially with chime audio cues.
+  - Score & Rating: Total points and percentage breakdown (18 bold `#22D3EE`).
+  - Breakdown list: Itemized criterion rows (15 regular `#94A3B8`).
+  - Fun fact: "Did you know" science/art callout (14 regular italic `#E2E8F0`).
+  - Action buttons: "Try Again" and "Next" text glass buttons (150 x 42, 9 apart) with 8.1 feel tokens.
+- **Toasts (above caption card):** 1-line notification pill (420 x 42 px), anchored `(0.5, 0)` at `(0, 140)`, positioned 12 px above the caption/result card zone. Fades in, floats upward 6 px, stays 3.0 s, fades out. Queued so rapid unlocks display sequentially.
+
 ---
 
 ## 7. Components

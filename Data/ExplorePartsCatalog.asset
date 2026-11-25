@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f7be28a4d7e374d9c7911bacfa847a, type: 3}
+  m_Name: ExplorePartsCatalog
+  m_EditorClassIdentifier: KMaxLauncher::ViitorCloud.KMaxLauncher.LauncherCatalog
+  title: TAKE IT APART
+  loadFormat: Load {0}
+  entries:
+  - label: Aprilia RSV4
+    subtitle: 'A superbike in 35 parts: pull it apart'
+    scenePath: Assets/Games/kmax-solar-system/Scenes/ExplodeViews.unity
+    previewPrefab: {fileID: 3639929530376640179, guid: 6efbeb26bf5124f4aa9266cb0ff61a23, type: 3}
+    thumbnail: {fileID: -2556873985140155537, guid: d596be28616d73347889e109f14d8518, type: 3}
+    hidden: 0
+    launchKey: ExploreParts.Model
+    launchValue: RSV4
+  - label: Centrifugal Pump
+    subtitle: An industrial pump, 167 parts, casing to impeller
+    scenePath: Assets/Games/kmax-solar-system/Scenes/ExplodeViews.unity
+    previewPrefab: {fileID: 9129115182198268283, guid: 456921c9ff0407e47ab389d8ad9a401e, type: 3}
+    thumbnail: {fileID: 6575837339488311097, guid: 363c36e13918b424691bc307168e8d98, type: 3}
+    hidden: 0
+    launchKey: ExploreParts.Model
+    launchValue: Pump
+  - label: Human Anatomy
+    subtitle: '820 parts: skeleton, lungs and organs apart'
+    scenePath: Assets/Games/kmax-solar-system/Scenes/ExplodeViews.unity
+    previewPrefab: {fileID: 3399368574412173243, guid: 5c807298486f44049bcb99774eadb8d4, type: 3}
+    thumbnail: {fileID: 21300000, guid: bcd0501634127d74bbab1d55a3b6e51e, type: 3}
+    hidden: 0
+    launchKey: ExploreParts.Model
+    launchValue: Anatomy
