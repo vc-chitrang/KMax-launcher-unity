@@ -123,7 +123,7 @@ namespace ViitorCloud.KMaxLauncher.Editor {
                 }
 
                 string path = scenes[i].path;
-                if (path.Contains("/Showcase/") || path.EndsWith("KmaxLauncherScene.unity") || path.EndsWith("PresentationScene.unity") || path.EndsWith("PresentationEnvironment.unity") || path.EndsWith("PresentationScene_Backup.unity") || path.EndsWith("PresentationScene_Backup_Copy.unity") || path.EndsWith("PresentationScene_v01.unity") || !File.Exists(path)) {
+                if (path.Contains("/Showcase/") || path.EndsWith("KmaxLauncherScene.unity") || path.EndsWith("PresentationScene.unity") || path.EndsWith("PresentationEnvironment.unity") || path.EndsWith("PresentationScene_Backup.unity") || path.EndsWith("PresentationScene_Backup_Copy.unity") || path.EndsWith("PresentationScene_v01.unity") || path.EndsWith("PresentationShowcase.unity") || !File.Exists(path)) {
                     continue;
                 }
 
